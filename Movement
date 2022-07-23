@@ -1,0 +1,47 @@
+using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+
+public class Movement: MonoBehaviour {
+    
+    void Update ()
+    {
+        int key = 0;
+        if(Input.GetKey("a"))
+        {
+            key = 1;
+        }
+        else if(Input.GetKey("d"))
+        {
+            key = 2;
+        }
+        else if(Input.GetKey("w"))
+        {
+            key = 3;
+        }
+        else if(Input.GetKey("s"))
+        {
+            key = 4;
+        }
+        
+        switch (key)
+        {
+            case 1:{
+                transform.Translate(-0.05f, 0, 0);
+                break;
+            }
+            case 2:{
+                transform.Translate(0.05f, 0, 0);
+                break;
+            }
+            case 3:{
+                transform.Translate(0, 0.05f, 0);
+                break;
+            }
+            case 4:{
+                transform.Translate(0, -0.05f, 0);
+                break;
+            }
+        }
+    }
+}
