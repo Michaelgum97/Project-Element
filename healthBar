@@ -1,0 +1,30 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class HealthBar : MonoBehaviour
+{
+    public Slider slider; //Defining a slider for the health value.
+    public Gradient gradient; //Defining a gradient for changing the color of the fill.
+    public Image fill; //Defining a fill that's used for the health bar itself.
+    public Text HP_number;
+    public int health_value=0;
+    public void SetMaxHealth(int health)
+    {
+        slider.maxValue = health;
+        slider.value = health;
+        fill.color = gradient.Evaluate(1f);
+        //health_value = health;
+        //HP_number.text = health_value.ToString();
+    }
+
+    public void SetHealth(int health)
+    {
+        slider.value = health;
+        fill.color = gradient.Evaluate(slider.normalizedValue);
+        //health_value = health;
+        //HP_number.text = health_value.ToString();
+    }
+
+}
