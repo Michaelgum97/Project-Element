@@ -1,0 +1,30 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class BattleUI : MonoBehaviour
+{
+    //initializing name text in type Text.
+    public Text nameText;
+    //initializing a slider for the HP.
+    public Slider slider; //Defining a slider for the health value.
+    public Gradient gradient; //Defining a gradient for changing the color of the fill.
+    public Image fill; //Defining a fill that's used for the health bar itself.
+    //Sets up the UI for each battle.
+    
+    public void SetUI(Unit unit)
+    {
+        nameText.text = unit.unitName;
+        slider.maxValue = unit.maxHealth;
+        slider.value = unit.currentHealth;
+    }
+    //Sets the health for each battle.
+    public void SetHealth(int health)
+    {
+        slider.value = health;
+        fill.color = gradient.Evaluate(slider.normalizedValue);
+        //health_value = health;
+        //HP_number.text = health_value.ToString();
+    }
+}
