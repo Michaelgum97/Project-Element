@@ -1,0 +1,45 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Square : MonoBehaviour
+{
+    Unit enemy1Unit = new Unit("Square", 1, "None", 30, 30, 20, 10, 10, 7, 15, 7, 0, 0);
+    public int Damage;
+    public int maxHealth;
+    public int currentHealth;
+    public HealthBar healthBar;
+
+    public int tempSkill = enemy1Unit.unitSkill;
+    public int tempSpeed = enemy1Unit.unitSpeed;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            TakeDamage(15);
+        }
+    }
+    public void battleProperties(int tempSkill, int tempSpeed)
+    {
+        int accuracy = tempSkill * 2;
+        int avoid = tempSpeed * 2;
+    }
+    void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        if(currentHealth < 0){
+            currentHealth = 0;
+        }
+
+        healthBar.SetHealth(currentHealth);
+    }
+}
