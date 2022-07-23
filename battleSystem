@@ -1,0 +1,61 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+//initializing an enum that holds the possible states.
+public enum BattleState{ START, PLAYERTURN, ENEMYTURN, WON, LOST }
+public class BattleSystem : MonoBehaviour
+{
+    //initializing the prefabs.
+    public GameObject Spider_prefab;
+    public GameObject Nina_prefab;
+    public GameObject Square_prefab;
+
+    //initializing battle UIs
+    public BattleUI playerUI;
+    public BattleUI enemyUI;
+
+    //initializing a dialogue text for displaying text.
+    public Text dialogueText;
+
+    //initializing the battle UI.
+    public Transform Player_Battle_UI;
+    public Transform Foe_Battle_UI;
+
+    //initializing units for player characters and enemy.
+    Unit player1Unit;
+    Unit player2Unit;
+    Unit enemy1Unit;
+
+    //initializing the state as a variable.
+    public BattleState state;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        //Puts the START state in the state variable and calls a function that starts the battle setup.
+        state = BattleState.START;
+        SetupBattle();
+    }
+    //Setting up the start of a battle.
+    void SetupBattle()
+    {
+        //Initializing new game object variables and giving them a cloned version of the prefabs and the battle UI.
+        GameObject player1GO = Instantiate(Spider_prefab, Player_Battle_UI);
+        player1Unit = player1GO.GetComponent<Unit>();
+
+        GameObject player2GO = Instantiate(Nina_prefab, Player_Battle_UI);
+        player2Unit = player2GO.GetComponent<Unit>();
+
+        GameObject enemyGo = Instantiate(Square_prefab, Foe_Battle_UI);
+        enemy1Unit = enemyGo.GetComponent<Unit>();
+
+        //Putting the enemy's name in the dialogue text variable.
+        dialogueText.text = enemyUnit.unitName;
+        //Setting up the UI and calling the SetUI function with the different units as parameters.
+        playerUI.SetUI(player1Unit);
+        playerUI.SetUI(player2Unit);
+        enemyUI.SetUI(enemy1Unit);
+    }
+}
