@@ -1,0 +1,39 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Unit
+{
+    public string unitName; //The unit's name
+    public int unitLevel; //The unit's level
+    public string unitElement;
+    public int maxHealth; //The unit's max health
+    public int currentHealth; //The unit's current health
+    public int unitStrength; //The value for physical attacks
+    public int unitMagic; //The value for magic attacks
+    public int unitSkill; //The value for calculating hit rates
+    public int unitSpeed; //The value for calculating avoid and determines the turn order
+    public int unitDefense; //The value to lower the damage from physical attacks
+    public int unitResistance; //The value to lower the damage from magic attacks
+    public int unitEXP; //EXP value for leveling up
+    public int unitAP; //AP value for learning and upgrading attacks
+
+    public Unit(string unitName, int unitLevel, string unitElement, int maxHealth, int currentHealth,
+    int unitStrength, int unitMagic, int unitSkill, int unitSpeed, int unitDefense,
+    int unitResistance, int unitEXP, int unitAP)
+    {
+        this.unitName = unitName;
+        this.unitLevel = unitLevel;
+        this.unitElement = unitElement;
+        this.maxHealth = maxHealth;
+        this.currentHealth = currentHealth;
+        this.unitStrength = unitStrength;
+        this.unitMagic = unitMagic;
+        this.unitSkill = unitSkill;
+        this.unitSpeed = unitSpeed;
+        this.unitDefense = unitDefense;
+        this.unitResistance = unitResistance;
+        this.unitEXP = unitEXP;
+        this.unitAP = unitAP;
+    }
+}
